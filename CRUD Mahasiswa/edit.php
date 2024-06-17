@@ -8,6 +8,16 @@ if (isset($_GET['id'])) {
 } else {
     echo "ID mahasiswa tidak ditemukan.";
 }
+
+if (isset($_POST['submit'])) {
+    $nama_mhs = $_POST["input1"];
+    $npm_mhs = $_POST["input2"];
+    $prodi_mhs = $_POST["input3"];
+
+    $sql = "UPDATE mahasiswa SET nama_mhs='$nama_mhs', npm_mhs='$npm_mhs', prodi_mhs='$prodi_mhs' WHERE id='$npm'";
+
+    $query = mysqli_query($koneksi, $sql);
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,19 +35,25 @@ if (isset($_GET['id'])) {
 
 <body>
     <div class="container">
-        <form action="proses.php" method="POST">
+        <form action="" method="POST">
             <fieldset>
                 <legend>FORM EDIT MAHASISWA</legend>
                 <div class="control-group">
                     <label for="npm">NAMA</label>
                     <div class="controls">
-                        <input type="text" name="input1" value="<?php echo $data['nama_mhs']; ?>">
+                        <input type="text" name="input1" name="input1" value="<?php echo $data['nama_mhs']; ?>">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="npm">NPM</label>
+                    <div class="controls">
+                        <input type="text" name="input2" name="input2" value="<?php echo $data['npm_mhs']; ?>">
                     </div>
                 </div>
                 <div class="control-group">
                     <label for="npm">PRODI</label>
                     <div class="controls">
-                        <input type="text" name="input2" value="<?php echo $data['prodi_mhs']; ?>">
+                        <input type="text" name="input3" id="input3" value="<?php echo $data['prodi_mhs']; ?>">
                     </div>
                 </div>
                 <div class="control-group">
@@ -47,7 +63,7 @@ if (isset($_GET['id'])) {
                     </div>
                 </div>
                 <div class="form_action">
-                    <button type="submit" class="btn btn-success" name="proses">Kirim</button>
+                    <button type="submit" class="btn btn-success" name="submit">Kirim</button>
                     <button type="reset" class="btn">Cancel</button>
                 </div>
             </fieldset>

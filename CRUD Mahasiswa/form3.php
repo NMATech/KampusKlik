@@ -1,6 +1,6 @@
 <?php
 include_once ("tampil.php");
-include_once('koneksi.php');
+include_once ('koneksi.php');
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ include_once('koneksi.php');
     <script src="library/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 
-<body>  
+<body>
     <div class="container">
         <div class="container-fluid">
             <nav class="navbar navbar-inverse">
@@ -42,15 +42,19 @@ include_once('koneksi.php');
                                         <div class="control-group">
                                             <label for="npm">NAMA</label>
                                             <div class="controls">
-                                                <input type="text" name="input1"
-                                                    value="">
+                                                <input type="text" name="input1" value="">
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label for="npm">NPM</label>
+                                            <div class="controls">
+                                                <input type="text" name="input2" value="">
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label for="npm">PRODI</label>
                                             <div class="controls">
-                                                <input type="text" name="input2"
-                                                    value="">
+                                                <input type="text" name="input3" value="">
                                             </div>
                                         </div>
                                         <div class="control-group">
@@ -70,6 +74,17 @@ include_once('koneksi.php');
                     </div>
                 </div>
                 <div class="row-fluid">
+                    <div>
+                        <form action="" class="navbar-search" method="POST">
+                            <select name="formPencarian" id="FormPencarian">
+                                <option value="id">Id Mahasiswa</option>
+                                <option value="nama_mhs">Nama Mahasiswa</option>
+                                <option value="npm_mhs">NPM Mahasiswa</option>
+                                <option value="prodi_mhs">Prodi Mahasiswa</option>
+                            </select>
+                            <button type="submit" class="btn btn-success mr-2">Cari</button>
+                        </form>
+                    </div>
                     <div class="block">
                         <div class="navbar navbar-inner block-header">
                             <div class="muted pull-left">Tabel Mahasiswa</div>
@@ -79,8 +94,9 @@ include_once('koneksi.php');
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>NPM</th>
+                                            <th>Id</th>
                                             <th>Nama Mahasiswa</th>
+                                            <th>NPM</th>
                                             <th>Prodi</th>
                                             <th>AKSI</th>
                                         </tr>
@@ -92,6 +108,7 @@ include_once('koneksi.php');
                                             <tr>
                                                 <td><?php echo $data['id']; ?></td>
                                                 <td><?php echo $data['nama_mhs']; ?></td>
+                                                <td><?php echo $data['npm_mhs']; ?></td>
                                                 <td><?php echo $data['prodi_mhs']; ?></td>
                                                 <td><a href="edit.php?id=<?php echo $data['id']; ?>">EDIT</a>
                                                     | <a href="hapus.php?id=<?php echo $data['id']; ?>">HAPUS</a></td>
